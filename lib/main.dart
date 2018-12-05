@@ -21,24 +21,71 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter bottomNavigationBar',
-//      theme: new ThemeData.,
-//      home: BottomNavigationWidget(),//BottomNavigationBar底部导航
-//      home: NavigationKeepAlive(),//BottomNavigationBar底部导航
-//      home: BottomAppBarDemo(),//BottomAppBar底部导航
-//      home: new FirstPage(), //自定义路由样式
-//      home: new FrostedGlassDemo(),//高斯玻璃
-//      home: new KeepAliveDemo(), //tab状态保持
-//      home: new SearchBarDemo(), //搜索框 todo::learning
-//      home: new TextFieldFocusDemo(),//text自动聚焦、动作、聚焦下一个text
-//      home: new NineWarp(), //九宫格模型
-//      home: new LabelChilDemo(), //标签demo
-//    home: ExpantionDemo(),//exnpantion demo
-//    home: new SilverDemo(),//不知道什么鬼
-//    home: new SilverDemo(),//不知道什么鬼
-//      home: new WillPopDemo(), //返回上一页的提示，如果是home页面直接是退出登陆
-//      home: new SwipeToDissmissDemo(), //列表中滑动删除item
-      home: DraggableDemo(),
+        title: 'Flutter bottomNavigationBar',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HomePageDemo());
+  }
+}
+
+class HomePageDemo extends StatefulWidget {
+  @override
+  State createState() {
+    return new HomePageDemoState();
+  }
+}
+
+class HomePageDemoState extends State<HomePageDemo> {
+  @override
+  Widget build(BuildContext context) {
+    return new ListView(
+      children: <Widget>[
+        new ButtonItem(
+            text: 'BottomNavigationBar底部导航，状态保持',
+            className: new NavigationKeepAlive()),
+        new ButtonItem(
+            text: 'BottomAppBar底部导航', className: new BottomAppBarDemo()),
+        new ButtonItem(text: '自定义路由样式', className: new FirstPage()),
+        new ButtonItem(text: '高斯玻璃', className: new FrostedGlassDemo()),
+        new ButtonItem(text: 'tab状态保持', className: new KeepAliveDemo()),
+        new ButtonItem(
+            text: '搜索框 todo::learning', className: new SearchBarDemo()),
+        new ButtonItem(
+            text: 'text自动聚焦、动作、聚焦下一个text', className: new TextFieldFocusDemo()),
+        new ButtonItem(text: '九宫格模型', className: new NineWarp()),
+        new ButtonItem(text: '标签demo', className: new LabelChilDemo()),
+        new ButtonItem(text: 'exnpantion demo', className: new ExpantionDemo()),
+        new ButtonItem(text: '渐变', className: new SilverDemo()),
+        new ButtonItem(
+            text: '返回上一页的提示，如果是home页面直接是退出登陆', className: new WillPopDemo()),
+        new ButtonItem(
+            text: '列表中滑动删除item', className: new SwipeToDissmissDemo()),
+        new ButtonItem(text: '可拖拽组件', className: new DraggableDemo()),
+      ],
+    );
+  }
+}
+
+class ButtonItem extends StatefulWidget {
+  final text;
+  final className;
+
+  const ButtonItem({Key key, this.text, this.className}) : super(key: key);
+
+  @override
+  _ButtonItemState createState() => _ButtonItemState();
+}
+
+class _ButtonItemState extends State<ButtonItem> {
+  @override
+  Widget build(BuildContext context) {
+    return new RaisedButton(
+      onPressed: () {
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => widget.className));
+      },
+      child: new Text(widget.text),
     );
   }
 }
