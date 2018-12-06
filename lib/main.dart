@@ -14,6 +14,7 @@ import 'silver.dart';
 import 'will_pop_demo.dart';
 import 'dismissble.dart';
 import 'draggable_demo.dart';
+import 'parent_child_state_manage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -39,6 +40,7 @@ class HomePageDemo extends StatefulWidget {
 class HomePageDemoState extends State<HomePageDemo> {
   @override
   Widget build(BuildContext context) {
+//    debugDumpApp();
     return new ListView(
       children: <Widget>[
         new ButtonItem(
@@ -62,6 +64,7 @@ class HomePageDemoState extends State<HomePageDemo> {
         new ButtonItem(
             text: '列表中滑动删除item', className: new SwipeToDissmissDemo()),
         new ButtonItem(text: '可拖拽组件', className: new DraggableDemo()),
+        new ButtonItem(text: '父子组件混合状态管理', className: new ParentWidgetC()),
       ],
     );
   }
