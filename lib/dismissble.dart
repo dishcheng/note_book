@@ -27,7 +27,7 @@ class _SwipeToDissmissDemoState extends State<SwipeToDissmissDemo> {
             print('index $index');
             return Dismissible(
               key: Key(list[index]),
-              direction: DismissDirection.endToStart,
+              direction: DismissDirection.endToStart,//滑动方向
               child: ListTile(title: Text('${list[index]}')),
               background: Container(
 //                color: Colors.redAccent,
