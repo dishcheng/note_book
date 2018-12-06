@@ -15,7 +15,8 @@ import 'will_pop_demo.dart';
 import 'dismissble.dart';
 import 'draggable_demo.dart';
 import 'parent_child_state_manage.dart';
-import 'package:note_book/textStyle.dart';
+import 'textStyle.dart';
+import 'ButtonTypes.dart';
 
 void main() => runApp(new MyApp());
 
@@ -65,8 +66,10 @@ class HomePageDemoState extends State<HomePageDemo> {
         new ButtonItem(
             text: '列表中滑动删除item', className: new SwipeToDissmissDemo()),
         new ButtonItem(text: '可拖拽组件', className: new DraggableDemo()),
+        //flutter实战
         new ButtonItem(text: '父子组件混合状态管理', className: new ParentWidgetC()),
         new ButtonItem(text: '文本样式', className: new TextStyleManage()),
+        new ButtonItem(text: '按钮类型', className: new ButtonTypes()),
       ],
     );
   }
