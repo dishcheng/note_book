@@ -59,8 +59,30 @@ class _TextStyleManageState extends State<TextStyleManage> {
                 ),
             //
           ),
+          Text.rich(TextSpan(
+              children: [
+                //我们需要对一个Text内容的不同部分按照不同的样式显示，这时就可以使用TextSpan，它代表文本的一个“片段”
+                //RichText是可以显示多种样式的(富文本)的widget。
+                TextSpan(text: 'TextSpan'),
+                TextSpan(text: 'TextSpan'),
+                TextSpan(
+                  text: "https://flutterchina.club",
+                  style: TextStyle(color: Colors.blue),
+//              recognizer: GestureRecognize,//它是点击链接后的一个处理器
+                ),
+              ],
+              style: TextStyle(
+                decoration: TextDecoration.underline,
+                //decoration下划线类型：默认为none，underline(下划线)，lineThrough（中划线）,overline(上划线)，单独设置无用，需要配合decorationColor
+                decorationColor: Colors.orange,
+              )))
         ],
       ),
     );
+  }
+
+  _handle() {
+    print('_handle');
+    print('_handle');
   }
 }
