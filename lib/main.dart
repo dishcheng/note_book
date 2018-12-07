@@ -17,6 +17,7 @@ import 'draggable_demo.dart';
 import 'parent_child_state_manage.dart';
 import 'textStyle.dart';
 import 'ButtonTypes.dart';
+import 'image_and_icon.dart';
 
 void main() => runApp(new MyApp());
 
@@ -70,6 +71,7 @@ class HomePageDemoState extends State<HomePageDemo> {
         new ButtonItem(text: '父子组件混合状态管理', className: new ParentWidgetC()),
         new ButtonItem(text: '文本样式', className: new TextStyleManage()),
         new ButtonItem(text: '按钮类型', className: new ButtonTypes()),
+        new ButtonItem(text: '图片和icon处理', className: new ImageAndIcons()),
       ],
     );
   }
