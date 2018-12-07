@@ -32,15 +32,14 @@ class _FormComponentsState extends State<FormComponents> {
     print(checkedListData);
   }
 
-  List<Widget> a() {
-    return [];
-  }
-
   @override
   void initState() {
     super.initState();
     _load();
   }
+
+  var RadioDefaultGroupValue = 1;
+  var RadioValues = [1, 2, 3];
 
   Widget checkBoxListItemBuild(text, value, index) {
     return new CheckboxListTile(
@@ -54,6 +53,13 @@ class _FormComponentsState extends State<FormComponents> {
     setState(() {
       checkedList[position] = isCheck;
 //      checkedListData[position]['single_print'] = isCheck == true ? 1 : 0;
+    });
+  }
+
+  //radio
+  updateGroupStatus(GroupValue) {
+    setState(() {
+      RadioDefaultGroupValue = GroupValue;
     });
   }
 
@@ -81,7 +87,7 @@ class _FormComponentsState extends State<FormComponents> {
       appBar: AppBar(
         title: Text('表单组件'),
       ),
-      body: new Column(children: <Widget>[
+      body: new ListView(children: <Widget>[
         new Row(
           children: <Widget>[
             Text('switch：'),
@@ -154,9 +160,33 @@ class _FormComponentsState extends State<FormComponents> {
             checkBoxListItemBuild('赵六', checkedList[3], 3),
           ],
         ),
-        new Row(
+        new Column(
           children: <Widget>[
             new Text('多个radio：'),
+            new RadioListTile(
+                title: Text('男'),
+                selected:
+                RadioValues[0] == RadioDefaultGroupValue ? true : false,
+                subtitle: Text('subtitle'),
+                value: RadioValues[0],
+                groupValue: RadioDefaultGroupValue,
+                onChanged: (int e) => updateGroupStatus(e)),
+            new RadioListTile(
+                title: Text('女'),
+                selected:
+                    RadioValues[1] == RadioDefaultGroupValue ? true : false,
+                subtitle: Text('subtitle'),
+                value: RadioValues[1],
+                groupValue: RadioDefaultGroupValue,
+                onChanged: (int e) => updateGroupStatus(e)),
+            new RadioListTile(
+                title: Text('未知'),
+                selected:
+                    RadioValues[2] == RadioDefaultGroupValue ? true : false,
+                subtitle: Text('subtitle'),
+                value: RadioValues[2],
+                groupValue: RadioDefaultGroupValue,
+                onChanged: (int e) => updateGroupStatus(e)),
           ],
         ),
       ]),
