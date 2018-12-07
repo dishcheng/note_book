@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'utils/NetUtils.dart';
+import 'utils/ApiUtils.dart';
 
 class FormComponents extends StatefulWidget {
   @override
@@ -10,6 +13,67 @@ class FormComponents extends StatefulWidget {
 class _FormComponentsState extends State<FormComponents> {
   bool _switchSelected = true; //维护单选开关状态
   bool _checkboxSelected = true; //维护复选框状态
+
+  List checkedListData = <String>[];
+  List checkedList = [true, true, true, true];
+
+  //加载数据
+  Future _load() async {
+    var a = {"shop_id": 1};
+    print('触发');
+    var ab =
+        await Http.get(Api.visitorInfo, params: a, errorCallBack: (errorMsg) {
+      print("error222:" + errorMsg);
+    });
+    print(ab);
+    setState(() {
+      checkedListData = ab['meta']['services'];
+    });
+    print(checkedListData);
+  }
+
+  List<Widget> a() {
+    return [];
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Widget checkBoxListItemBuild(text, value, index) {
+    return new CheckboxListTile(
+        controlAffinity: ListTileControlAffinity.leading,
+        title: new Text(text),
+        value: value,
+        onChanged: (bool) => updateCheckboxStatus(index, bool));
+  }
+
+  updateCheckboxStatus(int position, bool isCheck) {
+    setState(() {
+      checkedList[position] = isCheck;
+//      checkedListData[position]['single_print'] = isCheck == true ? 1 : 0;
+    });
+  }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    // TODO: implement build
+//    return new Material(
+//      child: new ListView.builder(
+//        padding: const EdgeInsets.all(16.0),
+//        itemCount: checkedListData.length,
+//        itemBuilder: (context, i) {
+//          print(checkedListData[i]);
+//          return checkBoxListItemBuild(
+//              checkedListData[i]['paper_type'],
+//              checkedListData[i]['single_print'] == 1 ? true : false,
+//              i); //把数据项塞入ListView中
+//        },
+//      ),
+//    );
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +116,7 @@ class _FormComponentsState extends State<FormComponents> {
         ),
         new Row(
           children: <Widget>[
-            Text('Checkbox：'),
+            Text('单个Checkbox：'),
             Checkbox(
               value: _checkboxSelected,
               activeColor: Colors.red,
@@ -70,22 +134,32 @@ class _FormComponentsState extends State<FormComponents> {
         ),
         new Row(
           children: <Widget>[
-            Text('radio：'),
+            Text('单个radio：'),
             Radio(
                 value: _checkboxSelected,
                 onChanged: (value) {
                   setState(() {
-                    _checkboxSelected = !_checkboxSelected;
+                    _checkboxSelected = value;
                   });
                 },
                 groupValue: _checkboxSelected),
           ],
         ),
+        new Column(
+          children: <Widget>[
+            new Text('多个checkbox：'),
+            checkBoxListItemBuild('张三', checkedList[0], 0),
+            checkBoxListItemBuild('李四', checkedList[1], 1),
+            checkBoxListItemBuild('王五', checkedList[2], 2),
+            checkBoxListItemBuild('赵六', checkedList[3], 3),
+          ],
+        ),
+        new Row(
+          children: <Widget>[
+            new Text('多个radio：'),
+          ],
+        ),
       ]),
     );
-  }
-
-  _pressed_down() {
-    print('aaaa');
   }
 }
