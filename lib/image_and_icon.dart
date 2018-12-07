@@ -39,12 +39,13 @@ class ImageAndIcons extends StatelessWidget {
           //http://iconfont.cn/help/detail?helptype=code&spm=a313x.7781069.1998910419.13.UZMhYl
           //参照安卓使用方法，将对应ttf文件放到fonts目录，并且在yaml文件中导入，在demo html页面中找到实体字符，如：&#xeb62
           //将&#改为0，变成0xeb62,参考MyIcons类；；；；注意：yaml文件修改后需要重新build，否则无法生效
+          new Text('使用自定义图标http: //iconfont.cn/help/detail?helptype=code&spm=a313x.7781069.1998910419.13.UZMhYl参照安卓使用方法，将对应ttf文件放到fonts目录，并且在yaml文件中导入，在demo html页面中找到实体字符，如：&#xeb62将&#改为0，变成0xeb62, 参考MyIcons类；注意：yaml文件修改后需要重新build，否则无法生效'),
           Icon(
-            MyIcons.bool,
+            MyIcons.guanfangbanben,
             color: Colors.green,
           ),
           Icon(
-            MyIcons.wechat,
+            MyIcons.gongnengdingyi,
             color: Colors.green,
           ),
         ],
@@ -54,11 +55,11 @@ class ImageAndIcons extends StatelessWidget {
 }
 
 class MyIcons {
-  // fork 图标
-  static const IconData bool =
-      const IconData(0xeb62, fontFamily: 'myIcon', matchTextDirection: true);
+  // 官方版本
+  static const IconData guanfangbanben =
+  const IconData(0xeb62, fontFamily: 'myIcon', matchTextDirection: true);
 
-  // 微信图标
-  static const IconData wechat =
-      const IconData(0xeb63, fontFamily: 'myIcon', matchTextDirection: true);
+  // 功能定义
+  static const IconData gongnengdingyi =
+  const IconData(0xeb63, fontFamily: 'myIcon', matchTextDirection: true);
 }
