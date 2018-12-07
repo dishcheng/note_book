@@ -38,7 +38,7 @@ class ImageAndIcons extends StatelessWidget {
           //使用自定义图标
           //http://iconfont.cn/help/detail?helptype=code&spm=a313x.7781069.1998910419.13.UZMhYl
           //参照安卓使用方法，将对应ttf文件放到fonts目录，并且在yaml文件中导入，在demo html页面中找到实体字符，如：&#xeb62
-          //将&#改为0，变成0xeb62,参考MyIcons类
+          //将&#改为0，变成0xeb62,参考MyIcons类；；；；注意：yaml文件修改后需要重新build，否则无法生效
           Icon(
             MyIcons.bool,
             color: Colors.green,
