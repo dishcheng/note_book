@@ -202,7 +202,8 @@ class _FormComponentsState extends State<FormComponents> {
         ),
         new Slider(
             value: SliderValue,
-            min: 1.0,//min需要大于0
+            min: 1.0,
+            //min需要大于0
             max: 100.0,
             divisions: SliderValue.toInt(),
             //刻度,不想出现刻度和气泡,删除这个属性就可以了
@@ -261,6 +262,27 @@ class _FormComponentsState extends State<FormComponents> {
             print(content); //文本内容变化,会回调给我们
           },
         ),
+        new Padding(padding: const EdgeInsets.all(8)),
+        new Material(
+          type: MaterialType.canvas,
+          shape: new StadiumBorder(
+              side: new BorderSide(
+                  color: Colors.green, style: BorderStyle.solid)),
+          child: new TextField(
+
+            autofocus: true, //自动获取焦点
+            controller: _textController,
+            decoration: new InputDecoration(
+                contentPadding: new EdgeInsets.all(15.0),
+                border: InputBorder.none,
+              hintText: '带形状的输入框',
+            ),
+
+            onChanged: (String content) {
+              print(content); //文本内容变化,会回调给我们
+            },
+          ),
+        )
       ]),
     );
   }
