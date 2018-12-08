@@ -63,6 +63,17 @@ class _FormComponentsState extends State<FormComponents> {
     });
   }
 
+  double SliderValue = 1.0;
+
+  slideUpdateValue(SliderChangeValue) {
+    print(SliderChangeValue.roundToDouble());
+    setState(() {
+      SliderValue = SliderChangeValue.roundToDouble();
+    });
+  }
+
+  final TextEditingController _textController = new TextEditingController();
+
 //  @override
 //  Widget build(BuildContext context) {
 //    // TODO: implement build
@@ -166,7 +177,7 @@ class _FormComponentsState extends State<FormComponents> {
             new RadioListTile(
                 title: Text('男'),
                 selected:
-                RadioValues[0] == RadioDefaultGroupValue ? true : false,
+                    RadioValues[0] == RadioDefaultGroupValue ? true : false,
                 subtitle: Text('subtitle'),
                 value: RadioValues[0],
                 groupValue: RadioDefaultGroupValue,
@@ -188,6 +199,67 @@ class _FormComponentsState extends State<FormComponents> {
                 groupValue: RadioDefaultGroupValue,
                 onChanged: (int e) => updateGroupStatus(e)),
           ],
+        ),
+        new Slider(
+            value: SliderValue,
+            min: 1.0,//min需要大于0
+            max: 100.0,
+            divisions: SliderValue.toInt(),
+            //刻度,不想出现刻度和气泡,删除这个属性就可以了
+            activeColor: Colors.red,
+            //滑块轨道中活动的部分的颜色。
+            inactiveColor: Colors.blue,
+            //滑块轨道的不活动部分的颜色
+            label: '$SliderValue',
+            //拖动滑块时候,在刻度上方气泡里面显示的进度值
+//            onChanged:(double e)=>slideUpdateValue(e.roundToDouble()))//四舍五入
+            onChanged: (double e) => slideUpdateValue(e)),
+        new Padding(padding: const EdgeInsets.all(8.0)),
+        new SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            activeTrackColor: Colors.deepOrangeAccent,
+            activeTickMarkColor: Colors.white,
+            inactiveTickMarkColor: Colors.white,
+            inactiveTrackColor: Colors.black,
+            valueIndicatorColor: Colors.blue,
+            thumbColor: Colors.green,
+            overlayColor: Colors.amber,
+          ),
+          child: new Container(
+            margin: const EdgeInsets.all(10.0),
+            child: new Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text('0.0'),
+                new Expanded(
+                    child: new Slider(
+                        onChanged: (double value) {
+                          setState(() {
+                            SliderValue = value;
+                          });
+                        },
+                        divisions: 10,
+                        //不想出现刻度和气泡,删除这个属性就可以了，自己实验
+                        label: '$SliderValue',
+                        value: SliderValue,
+                        max: 100,
+                        min: 1)),
+                new Text('100.0'),
+              ],
+            ),
+          ),
+        ),
+        new TextField(
+          autofocus: true, //自动获取焦点
+          controller: _textController,
+          decoration: new InputDecoration(
+            contentPadding: new EdgeInsets.all(15.0),
+//              border: InputBorder.none
+          ),
+          onChanged: (String content) {
+            print(content); //文本内容变化,会回调给我们
+          },
         ),
       ]),
     );
