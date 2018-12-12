@@ -15,6 +15,7 @@ class FlewWidget extends StatelessWidget {
           //默认子widget居左对齐
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text('水平Axis.horizontal：'),
             Flex(
               //Flex的两个子widget按1：2来占据水平空间
               direction: Axis.horizontal,
@@ -32,6 +33,34 @@ class FlewWidget extends StatelessWidget {
                       height: 20,
                     )),
               ],
+            ),
+            Text('垂直Axis.vertical：'),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: SizedBox(
+                height: 100,
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 20,
+                          color: Colors.amber,
+                        )),
+                    Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        height: 30.0,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             )
           ],
         ));
