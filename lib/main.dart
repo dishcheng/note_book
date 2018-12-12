@@ -19,7 +19,11 @@ import 'textStyle.dart';
 import 'ButtonTypes.dart';
 import 'image_and_icon.dart';
 import 'FormComponents.dart';
+import 'transform_widget.dart';
+import 'widgets/row_and_column.dart';
+import 'widgets/flex.dart';
 
+//
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -74,6 +78,14 @@ class HomePageDemoState extends State<HomePageDemo> {
         new ButtonItem(text: '按钮类型', className: new ButtonTypes()),
         new ButtonItem(text: '图片和icon处理', className: new ImageAndIcons()),
         new ButtonItem(text: '表单组件', className: new FormComponents()),
+        new ButtonItem(text: '变换组件', className: new TransformWidget()),
+        new ButtonItem(text: 'widget组件/row', className: new RowWidget()),
+        new ButtonItem(
+            text: 'widget组件/column嵌套', className: new SpecialColumn()),
+        new ButtonItem(
+            text: 'widget组件/column嵌套2', className: new SpecialColumn2()),
+
+        new ButtonItem(text: 'widget组件/flex', className: new FlewWidget()),
       ],
     );
   }
