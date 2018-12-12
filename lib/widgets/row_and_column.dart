@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 //http://localhost:4000/chapter4/row_and_column.html
 class RowWidget extends StatelessWidget {

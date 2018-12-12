@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class FlewWidget extends StatelessWidget {
   //flex为弹性系数，如果为0或null，

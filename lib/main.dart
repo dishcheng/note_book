@@ -22,6 +22,8 @@ import 'FormComponents.dart';
 import 'transform_widget.dart';
 import 'widgets/row_and_column.dart';
 import 'widgets/flex.dart';
+import 'widgets/wrap.dart';
+import 'widgets/stack.dart';
 
 //
 void main() => runApp(new MyApp());
@@ -86,6 +88,8 @@ class HomePageDemoState extends State<HomePageDemo> {
             text: 'widget组件/column嵌套2', className: new SpecialColumn2()),
 
         new ButtonItem(text: 'widget组件/flex', className: new FlewWidget()),
+        new ButtonItem(text: 'widget组件/wrap', className: new WrapWidget()),
+        new ButtonItem(text: 'widget组件/stack', className: new StackWidget()),
       ],
     );
   }
