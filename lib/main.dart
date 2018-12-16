@@ -26,6 +26,9 @@ import 'widgets/wrap.dart';
 import 'widgets/stack.dart';
 import 'widgets/ConstrainedBoxWidget.dart';
 import 'widgets/DecoratedBoxWidget.dart';
+import 'widgets/ContainerWidget.dart';
+import 'gesture_detector.dart';
+import 'websocekt_test.dart';
 
 //
 void main() => runApp(new MyApp());
@@ -99,6 +102,12 @@ class HomePageDemoState extends State<HomePageDemo> {
         new ButtonItem(
             text: '容器类widget组件/装饰容器容器DecoratedBox',
             className: new DecoratedBoxWidget()),
+        new ButtonItem(
+            text: '容器类widget组件/container容器（组合widget）',
+            className: new ContainerWidget()),
+
+        new ButtonItem(text: '手势识别', className: new GestureDetect()),
+        new ButtonItem(text: 'websocket测试', className: new WebSocketRoute()),
       ],
     );
   }
