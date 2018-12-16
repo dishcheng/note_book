@@ -19,11 +19,13 @@ import 'textStyle.dart';
 import 'ButtonTypes.dart';
 import 'image_and_icon.dart';
 import 'FormComponents.dart';
-import 'transform_widget.dart';
+import 'widgets/transform_widget.dart';
 import 'widgets/row_and_column.dart';
 import 'widgets/flex.dart';
 import 'widgets/wrap.dart';
 import 'widgets/stack.dart';
+import 'widgets/ConstrainedBoxWidget.dart';
+import 'widgets/DecoratedBoxWidget.dart';
 
 //
 void main() => runApp(new MyApp());
@@ -90,6 +92,13 @@ class HomePageDemoState extends State<HomePageDemo> {
         new ButtonItem(text: 'widget组件/flex', className: new FlewWidget()),
         new ButtonItem(text: 'widget组件/wrap', className: new WrapWidget()),
         new ButtonItem(text: 'widget组件/stack', className: new StackWidget()),
+        new ButtonItem(
+            text: '容器类widget组件/ConstrainedBox',
+            className: new ConstrainedBoxWidget()),
+
+        new ButtonItem(
+            text: '容器类widget组件/装饰容器容器DecoratedBox',
+            className: new DecoratedBoxWidget()),
       ],
     );
   }
