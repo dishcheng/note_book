@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
 import 'package:image_picker/image_picker.dart';
+
 //  此外需要加入下面四行代码到android/app/src/main/AndroidManifest.xml
 //<uses-permission android:name="android.permission.CAMERA" />
 //<uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -55,6 +56,9 @@ class _NineWarpState extends State<NineWarp> {
     var image =
         await ImagePicker.pickImage(source: ImageSource.gallery); //获取相册照片
 
+    if (image == null) {
+      return;
+    }
     setState(() {
       list.insert(list.length - 1, buildPhoto(image));
 //      _image = image;

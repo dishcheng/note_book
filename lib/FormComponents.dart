@@ -19,16 +19,16 @@ class _FormComponentsState extends State<FormComponents> {
 
   //加载数据
   Future _load() async {
-    var a = {"shop_id": 1};
+//    var a = {"shop_id": 1};
     print('触发');
-    var ab =
-        await Http.get(Api.visitorInfo, params: a, errorCallBack: (errorMsg) {
-      print("error222:" + errorMsg);
-    });
-    print(ab);
-    setState(() {
-      checkedListData = ab['meta']['services'];
-    });
+//    var ab =
+//        await Http.get(Api.visitorInfo, params: a, errorCallBack: (errorMsg) {
+//      print("error222:" + errorMsg);
+//    });
+//    print(ab);
+//    setState(() {
+//      checkedListData = ab['meta']['services'];
+//    });
     print(checkedListData);
   }
 
