@@ -29,20 +29,58 @@ import 'widgets/DecoratedBoxWidget.dart';
 import 'widgets/ContainerWidget.dart';
 import 'gesture_detector.dart';
 import 'websocekt_test.dart';
+import 'redux_demo.dart';
 
-//
-void main() => runApp(new MyApp());
+import 'package:flutter_redux/flutter_redux.dart';
+import 'utils/reduxUtils.dart';
+import 'package:redux/redux.dart';
+
+void main() {
+  runApp(new MyApp(
+    store: store,
+  ));
+}
 
 class MyApp extends StatelessWidget {
+  final Store<AppState> store;
+
+  MyApp({this.store});
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return new MaterialApp(
+//        title: 'Flutter bottomNavigationBar',
+//        theme: ThemeData(
+//          primarySwatch: Colors.blue,
+//        ),
+//        home: HomePageDemo());
+//  }
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-        title: 'Flutter bottomNavigationBar',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+    return new StoreProvider<AppState>(
+      store: store,
+      child: new MaterialApp(
+        title: 'RxDart Github Search',
+        theme: new ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.grey,
         ),
-        home: HomePageDemo());
+        home: new HomePageDemo(),
+      ),
+    );
   }
+//  @override
+//  Widget build(BuildContext context) {
+//    return new StoreProvider(
+//        store: store,
+//        child: new MaterialApp(
+//            title: 'Flutter Demo',
+//            theme: new ThemeData(
+//              primarySwatch: Colors.blue,
+//            ),
+//            home: HomePageDemo()));
+//  }
 }
 
 class HomePageDemo extends StatefulWidget {
@@ -108,6 +146,16 @@ class HomePageDemoState extends State<HomePageDemo> {
 
         new ButtonItem(text: '手势识别', className: new GestureDetect()),
         new ButtonItem(text: 'websocket测试', className: new WebSocketRoute()),
+        new ButtonItem(
+          text: 'redux状态管理',
+          className: new StoreConnector<AppState, AppState>(
+              builder: (BuildContext context, AppState state) {
+            print("isLogin:${state.auth.isLogin}");
+            return new ReduxDemo();
+          }, converter: (Store<AppState> store) {
+            return store.state;
+          }),
+        ),
       ],
     );
   }
